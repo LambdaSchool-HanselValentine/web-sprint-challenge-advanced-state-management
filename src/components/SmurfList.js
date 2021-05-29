@@ -3,8 +3,16 @@ import Smurf from "./Smurf";
 
 //1
 import { connect } from "react-redux";
+import { fetchSmurfs } from "../actions/index";
 
-const SmurfList = ({ smurfs, isFetching }) => {
+const SmurfList = ({ smurfs, isFetching, fetchSmurfs }) => {
+	useEffect(() => {
+		console.log("fetchSmurfs called in child component");
+		fetchSmurfs();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	// // dont need anymore:
 	// const isLoading = false;
 	// const testSmurf = {
 	// 	id: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
@@ -15,17 +23,19 @@ const SmurfList = ({ smurfs, isFetching }) => {
 	// 		"Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.",
 	// };
 
+	// 3.
 	if (isFetching) {
 		return <h1>Loading...</h1>;
 	}
 
 	return (
+		// 2.
 		<div className="listContainer">
 			{smurfs.map((smurf) => {
-				return <Smurf />;
+				return <Smurf key={smurf.id} smurf={smurf} />;
 			})}
-			{/* dont need anymore:
-             <Smurf smurf={testSmurf} /> */}
+			{/* dont need anymore: 
+			<Smurf smurf={testSmurf} /> */}
 		</div>
 	);
 };
@@ -38,7 +48,7 @@ const mapStateToProps = (state) => {
 };
 
 // export default SmurfList;
-export default connect(mapStateToProps, {})(SmurfList);
+export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
 
 //Task List:
 //1. Connect the smurfs and loading state values to the SmurfList component.

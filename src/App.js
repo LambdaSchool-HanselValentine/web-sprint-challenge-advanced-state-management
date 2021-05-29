@@ -13,6 +13,7 @@ import { fetchSmurfs } from "./actions/index";
 class App extends Component {
 	// 2.
 	componentDidMount() {
+		console.log("fetchSmurf called in App.js");
 		fetchSmurfs();
 	}
 

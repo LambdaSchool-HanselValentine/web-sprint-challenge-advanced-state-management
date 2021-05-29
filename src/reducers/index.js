@@ -12,8 +12,8 @@ import {
 //  - a boolean indicating if the app is loading
 //  - a string indicating a possible error message
 export const initialState = {
-	smurfs: [],
 	isFetching: false,
+	smurfs: [],
 	error: "",
 };
 //
@@ -30,8 +30,8 @@ const reducer = (state = initialState, action) => {
 		case FETCHING_SUCCESS:
 			return {
 				...state,
-				smurfs: [...state.smurfs, action.payload],
 				isFetching: false,
+				smurfs: action.payload,
 			};
 		//5. Add in a reducer cases to accommodate the failed smurf api fetch.
 		case FETCHING_FAILED:
