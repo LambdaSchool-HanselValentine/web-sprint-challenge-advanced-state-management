@@ -18,19 +18,19 @@ export const initialState = {
 };
 //
 //2. Add in the arguments needed to complete a standard reducer function.
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		//3. Add in a reducer case to accommodate the start of a smurf fetch.
 		case FETCHING_SMURF:
 			return {
 				...state,
 				isFetching: true,
-				smurfs: action.payload,
 			};
 		//4. Add in a reducer case to accommodate the successful smurf api fetch.
 		case FETCHING_SUCCESS:
 			return {
 				...state,
+				smurfs: [...state.smurfs, action.payload],
 				isFetching: false,
 			};
 		//5. Add in a reducer cases to accommodate the failed smurf api fetch.
