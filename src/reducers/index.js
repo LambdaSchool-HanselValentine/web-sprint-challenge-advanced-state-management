@@ -3,7 +3,7 @@ import {
 	FETCHING_SUCCESS,
 	FETCHING_FAILED,
 	ADD_SMURF,
-	ERROR_MESSAGE,
+	SET_ERROR_MESSAGE,
 } from "../actions/index";
 
 //Task List:
@@ -25,6 +25,7 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				isFetching: true,
+				smurfs: action.payload,
 			};
 		//4. Add in a reducer case to accommodate the successful smurf api fetch.
 		case FETCHING_SUCCESS:
@@ -39,6 +40,7 @@ const reducer = (state, action) => {
 				isFetching: false,
 				error: action.payload,
 			};
+		//6. Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
 		case ADD_SMURF: {
 			return {
 				...state,
@@ -53,19 +55,16 @@ const reducer = (state, action) => {
 				],
 			};
 		}
-		case ERROR_MESSAGE: {
+		//7. Add in a reducer case that adds in a value to the error message.
+		case SET_ERROR_MESSAGE: {
 			return {
 				...state,
 				error: action.payload,
 			};
 		}
-
 		default:
 			return state;
 	}
 };
 
 export default reducer;
-
-//6. Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
-//7. Add in a reducer case that adds in a value to the error message.
