@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
-// export default SmurfList;
+// old export: export default SmurfList;
 export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
 
 //Task List:

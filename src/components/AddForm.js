@@ -23,16 +23,17 @@ const AddForm = ({ error, addSmurf, setErrorMsg }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (state.name === "" || state.position === "" || state.nickname === "") {
-			// 2
 			setErrorMsg("Name, position and nickname fields are required.");
 		}
 		// 4.
 		addSmurf(state.name, state.position, state.nickname, state.description);
 	};
 
-	const errorMessage = "";
+	// // dont need anymore:
+	// const errorMessage = "";
 
 	return (
+		// 2. somewhere inside this JSX
 		<section>
 			<h2>Add Smurf</h2>
 			<form onSubmit={handleSubmit}>
