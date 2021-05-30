@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isFetching: false,
-				error: action.payload,
+				// error: action.payload,
 			};
 		//6. Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, summary and an internally generated id) into your smurf list.
 		case ADD_SMURF: {

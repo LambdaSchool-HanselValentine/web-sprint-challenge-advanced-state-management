@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Smurf from "./Smurf";
 
-//1
+//1.
 import { connect } from "react-redux";
 import { fetchSmurfs } from "../actions/index";
 
@@ -31,8 +31,8 @@ const SmurfList = ({ smurfs, isFetching, fetchSmurfs }) => {
 	return (
 		// 2.
 		<div className="listContainer">
-			{smurfs.map((smurf) => {
-				return <Smurf key={smurf.id} smurf={smurf} />;
+			{smurfs.map((smurf, i) => {
+				return <Smurf key={i} smurf={smurf} />;
 			})}
 			{/* dont need anymore: 
 			<Smurf smurf={testSmurf} /> */}

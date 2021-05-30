@@ -20,20 +20,21 @@ export const fetchSmurfs = () => {
 				dispatch({ type: FETCHING_SUCCESS, payload: res.data });
 			})
 			.catch((err) => {
-				dispatch({ type: FETCHING_FAILED, payload: JSON.stringify(err) });
+				dispatch({ type: FETCHING_FAILED });
+				// dispatch({ type: FETCHING_FAILED, payload: JSON.stringify(err) });
 			});
 	};
 };
 
 //2. Add a standard action that allows us to add new smurf (including the name, nickname, position, summary)
-export const addSmurf = (name, nickname, position, summary) => {
+export const addSmurf = (name, nickname, position, description) => {
 	return {
 		type: ADD_SMURF,
 		payload: {
 			name: name,
 			nickname: nickname,
 			position: position,
-			summary: summary,
+			description: description,
 		},
 	};
 };
