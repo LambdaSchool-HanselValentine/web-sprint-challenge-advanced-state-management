@@ -1,25 +1,34 @@
 import React, { Component } from "react";
 
-import AddForm from './components/AddForm';
-import SmurfList from './components/SmurfList';
-import Header from './components/Header';
+import AddForm from "./components/AddForm";
+import SmurfList from "./components/SmurfList";
+import Header from "./components/Header";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
+// 1.
+import { fetchSmurfs } from "./actions/index";
 
-        <main>
-          <SmurfList/>
-          <AddForm/>
-        </main>
-      </div>
-    );
-  }
+class App extends Component {
+	// 2.
+	componentDidMount() {
+		console.log("fetchSmurf called in App.js");
+		fetchSmurfs();
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<Header />
+
+				<main>
+					<SmurfList />
+					<AddForm />
+				</main>
+			</div>
+		);
+	}
 }
 
 export default App;
